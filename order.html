@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<div id="container">
+    
+    <div id="image-slider" class="slider"></div>
+    <div id="image-dots" class="dots"></div>
+
+    <!-- Информация о продукте -->
+    <div class="product-card">
+        <h2 class="product-name" id="product-name">2tab1</h2>
+        <div class="product-price">
+            <span class="current-price" id="product-price">150 ₽</span>
+            <span class="old-price" id="product-old-price">6546 ₽</span>
+        </div>
+        <div class="availability" id="stock-status">Нет в наличии</div>
+        <p class="product-description" id="product-description">
+            Описание: самый лучший айфон. Купи и не пожалеешь. Стиль. Дизайн. Утончённость.
+            Всё собирает в себя это чудо техники!
+        </p>
+    </div>
+
+    <!-- Информация о доставке и безопасности -->
+    <div class="info-section">
+        <h3>Доставка</h3>
+        <p>Среднее время доставки 20–25 дней. После оплаты вы сможете отслеживать статусы доставки и получать уведомления об их изменении.</p>
+    </div>
+    <div class="info-section">
+        <h3>Страховка и безопасность</h3>
+        <p>В стоимость товара входит его полное страхование. Мы несем ответственность, чтобы вы получили свой заказ в целости и сохранности.</p>
+    </div>
+    <div class="info-section">
+        <h3>Строго оригинал</h3>
+        <p>Мы гарантируем, что все купленные товары в Unicorn оригинальные и прошли проверку на подлинность. Если по каким-то причинам у вас на руках окажется подделка — мы вернем деньги в двойном размере.</p>
+    </div>
+
+    <!-- Слайдер отзывов -->
+    <h3>Отзывы:</h3>
+    <div id="reviews-slider" class="slider"></div>
+    <div id="review-dots" class="dots"></div>
+
+    <!-- Кнопка перехода к оплате -->
+    <button id="pay-button">Перейти к оплате</button>
+
+    <!-- Модальное окно для ввода данных пользователя -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Введите ваши данные</h2>
+            <form id="user-form">
+                <label for="full-name">ФИО:</label>
+                <input type="text" id="full-name" placeholder="Введите ваше имя" required>
+                
+                <label for="phone-number">Номер телефона:</label>
+                <input type="tel" id="phone-number" placeholder="+7 (999) 123-45-67" required>
+                
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" placeholder="example@mail.com" required>
+                
+                <button type="submit">Отправить заказ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проверки выбранных опций -->
+    <div id="option-check-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-option-check">&times;</span>
+            <p id="option-check-message"></p>
+            <button id="close-option-check-button">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<script src="order.js"></script>
+</body>
+</html>

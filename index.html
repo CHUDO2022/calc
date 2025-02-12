@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale_iPhone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <button class="close-btn">Закрыть</button>
+            <span class="app-name">Sale_iPhone</span>
+            <div id="user-info" class="user-info"></div>
+        </header>
+        <div class="search-bar">
+            <input type="text" placeholder="Найти товары Apple">
+        </div>
+        <div class="navigation">
+            <button id="home-btn" class="nav-btn hidden">Главная</button>
+            <button id="stats-btn" class="nav-btn" style="display: none;">Статистика</button>
+        </div>
+
+        <div class="slider-container">
+            <div class="story-item">
+                <img src="media/1.png" alt="Зови друзей! +500Р" class="story-item-image">
+                <div class="story-item-title">Зови друзей! +500Р</div>
+            </div>
+            <div class="story-item">
+                <img src="media/2.png" alt="Знакомьтесь, SaleIphone!" class="story-item-image">
+                <div class="story-item-title">Знакомьтесь, SaleIphone!</div>
+            </div>
+            <div class="story-item">
+                <img src="media/3.png" alt="Что умеет наш бот?" class="story-item-image">
+                <div class="story-item-title">Что умеет наш бот?</div>
+            </div>
+            <div class="story-item">
+                <img src="media/4.png" alt="3 способа заказать наши продукты" class="story-item-image">
+                <div class="story-item-title">3 способа заказать наши продукты</div>
+            </div>
+            <div class="story-item">
+                <img src="media/5.png" alt="Заказывай сейчас — плати потом" class="story-item-image">
+                <div class="story-item-title">Заказывай сейчас — плати потом</div>
+            </div>
+            <div class="story-item">
+                <img src="media/6.png" alt="Как выбрать размер Iphone?" class="story-item-image">
+                <div class="story-item-title">Как выбрать размер Iphone?</div>
+            </div>
+            <div class="story-item">
+                <img src="media/7.png" alt="500 Iphone в наличии" class="story-item-image">
+                <div class="story-item-title">500 Iphone в наличии</div>
+            </div>
+            <div class="story-item">
+                <img src="media/8.png" alt="Построй свой бизнес на товарах Apple" class="story-item-image">
+                <div class="story-item-title">Построй свой бизнес на товарах Apple</div>
+            </div>
+        </div>
+
+        <div class="top-section">
+            <div class="points-section">
+                <div class="points-title">Баллы</div>
+                <div class="points-value">0</div>
+            </div>
+            <div class="invite-section">
+                <div class="invite-title">Зови друзей</div>
+                <div class="invite-text">Дарим по 500Р - тебе и приведенному другу</div>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <button class="action-btn select-order-btn">Выбрать и заказать <span class="arrow">→</span></button>
+            <button class="action-btn calculate-cost-btn">Рассчитать стоимость</button>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="tab1">Игровые приставки</button>
+                <button class="tab-button" data-tab="tab2">Iphone</button>
+                <button class="tab-button" data-tab="tab3">Samsung</button>
+                <button class="tab-button" data-tab="tab4">Электросамокаты</button>
+                <button class="tab-button" id="more-categories-btn">Еще категории</button>
+            </div>
+        </div>
+
+        <h2>Каталог</h2>
+        <div id="product-list" class="products-list">
+            <!-- Карточки товаров будут добавляться сюда динамически -->
+        </div>
+
+        <div id="more-categories-modal" class="modal hidden">
+            <div class="modal-content">
+                <span id="close-modal-btn" class="close-modal-btn">&times;</span>
+                <h2>Дополнительные категории</h2>
+                <button class="modal-tab-button" data-tab="tab5">Колонки</button>
+                <button class="modal-tab-button" data-tab="tab6">Виниловые пластинки</button>
+                <button class="modal-tab-button" data-tab="tab7">Диски на пc 5</button>
+            </div>
+        </div>
+
+        <div id="usercard" class="usercard hidden"></div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
