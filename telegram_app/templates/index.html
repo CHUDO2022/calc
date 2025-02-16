@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для расчета доставки</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; text-align: center; }
+        form { background: white; padding: 20px; margin: 20px auto; width: 300px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); }
+        input, select { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="submit"] { background-color: #E74C3C; color: white; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #C0392B; }
+    </style>
+</head>
+<body>
+    <h1>Расчет стоимости доставки</h1>
+    <form id="deliveryForm">
+        <label for="category">Категория товара:</label>
+        <select id="category" name="category">
+            <option value="Обычные товары">Обычные товары</option>
+            <option value="Текстиль">Текстиль</option>
+            <option value="Одежда">Одежда</option>
+            <option value="Обувь">Обувь</option>
+            <option value="Нижнее белье">Нижнее белье</option>
+        </select>
+
+        <label for="weight">Вес (кг):</label>
+        <input type="number" id="weight" name="weight" required min="0.1" step="any">
+
+        <label for="length">Длина (см):</label>
+        <input type="number" id="length" name="length" required min="1" step="any">
+
+        <label for="width">Ширина (см):</label>
+        <input type="number" id="width" name="width" required min="1" step="any">
+
+        <label for="height">Высота (см):</label>
+        <input type="number" id="height" name="height" required min="1" step="any">
+
+        <label for="cost">Стоимость ($):</label>
+        <input type="number" id="cost" name="cost" required min="0.01" step="any">
+
+        <label for="quantity">Количество коробок:</label>
+        <input type="number" id="quantity" name="quantity" required min="1" step="1">
+
+        <input type="submit" value="Рассчитать стоимость">
+    </form>
+
+    <script>
+    document.getElementById("deliveryForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // 1️⃣ Получаем данные из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const telegram_id = urlParams.get("tg_id") ? parseInt(urlParams.get("tg_id")) : null;
+        const username = urlParams.get("username") || "не указан";
+        const first_name = urlParams.get("first_name") || "не указано";
+        const last_name = urlParams.get("last_name") || "не указано";
+        const language_code = urlParams.get("lang") || "неизвестно";
+
+        // 2️⃣ Получаем данные формы
+        const formData = {
+            category: document.getElementById("category").value,
+            weight: parseFloat(document.getElementById("weight").value),
+            length: parseFloat(document.getElementById("length").value),
+            width: parseFloat(document.getElementById("width").value),
+            height: parseFloat(document.getElementById("height").value),
+            cost: parseFloat(document.getElementById("cost").value),
+            quantity: parseInt(document.getElementById("quantity").value),
+            telegram_id: telegram_id,
+            username: username,
+            first_name: first_name,
+            last_name: last_name,
+            language_code: language_code
+        };
+
+        // 3️⃣ Отправляем данные на сервер Flask
+        fetch("/save", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => { alert(data.message); })
+        .catch(error => { alert("Ошибка: " + error.message); });
+    });
+</script>
+</body>
+</html>
