@@ -3,107 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sale_iPhone</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Форма для расчета доставки</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; text-align: center; }
+        form { background: white; padding: 20px; margin: 20px auto; width: 300px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); }
+        input, select { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="submit"] { background-color: #E74C3C; color: white; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #C0392B; }
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <header>
-            <button class="close-btn">Закрыть</button>
-            <span class="app-name">Sale_iPhone</span>
-            <div id="user-info" class="user-info"></div>
-        </header>
-        <div class="search-bar">
-            <input type="text" placeholder="Найти товары Apple">
-        </div>
-        <div class="navigation">
-            <button id="home-btn" class="nav-btn hidden">Главная</button>
-            <button id="stats-btn" class="nav-btn" style="display: none;">Статистика</button>
-        </div>
+    <h1>Расчет стоимости доставки</h1>
+    <form id="deliveryForm">
+        <label for="category">Категория товара:</label>
+        <select id="category" name="category">
+            <option value="Обычные товары">Обычные товары</option>
+            <option value="Текстиль">Текстиль</option>
+            <option value="Одежда">Одежда</option>
+            <option value="Обувь">Обувь</option>
+            <option value="Нижнее белье">Нижнее белье</option>
+        </select>
 
-        <div class="slider-container">
-            <div class="story-item">
-                <img src="media/1.png" alt="Зови друзей! +500Р" class="story-item-image">
-                <div class="story-item-title">Зови друзей! +500Р</div>
-            </div>
-            <div class="story-item">
-                <img src="media/2.png" alt="Знакомьтесь, SaleIphone!" class="story-item-image">
-                <div class="story-item-title">Знакомьтесь, SaleIphone!</div>
-            </div>
-            <div class="story-item">
-                <img src="media/3.png" alt="Что умеет наш бот?" class="story-item-image">
-                <div class="story-item-title">Что умеет наш бот?</div>
-            </div>
-            <div class="story-item">
-                <img src="media/4.png" alt="3 способа заказать наши продукты" class="story-item-image">
-                <div class="story-item-title">3 способа заказать наши продукты</div>
-            </div>
-            <div class="story-item">
-                <img src="media/5.png" alt="Заказывай сейчас — плати потом" class="story-item-image">
-                <div class="story-item-title">Заказывай сейчас — плати потом</div>
-            </div>
-            <div class="story-item">
-                <img src="media/6.png" alt="Как выбрать размер Iphone?" class="story-item-image">
-                <div class="story-item-title">Как выбрать размер Iphone?</div>
-            </div>
-            <div class="story-item">
-                <img src="media/7.png" alt="500 Iphone в наличии" class="story-item-image">
-                <div class="story-item-title">500 Iphone в наличии</div>
-            </div>
-            <div class="story-item">
-                <img src="media/8.png" alt="Построй свой бизнес на товарах Apple" class="story-item-image">
-                <div class="story-item-title">Построй свой бизнес на товарах Apple</div>
-            </div>
-        </div>
+        <label for="weight">Вес (кг):</label>
+        <input type="number" id="weight" name="weight" required min="0.1" step="any">
 
-        <div class="top-section">
-            <div class="points-section">
-                <div class="points-title">Баллы</div>
-                <div class="points-value">0</div>
-            </div>
-            <div class="invite-section">
-                <div class="invite-title">Зови друзей</div>
-                <div class="invite-text">Дарим по 500Р - тебе и приведенному другу</div>
-            </div>
-        </div>
-        <div class="bottom-section">
-            <button class="action-btn select-order-btn">Выбрать и заказать <span class="arrow">→</span></button>
-            <button class="action-btn calculate-cost-btn">Рассчитать стоимость</button>
-        </div>
+        <label for="length">Длина (см):</label>
+        <input type="number" id="length" name="length" required min="1" step="any">
 
-        <div class="tabs-container">
-            <div class="tabs">
-                <button class="tab-button active" data-tab="tab1">Игровые приставки</button>
-                <button class="tab-button" data-tab="tab2">Iphone</button>
-                <button class="tab-button" data-tab="tab3">Samsung</button>
-                <button class="tab-button" data-tab="tab4">Электросамокаты</button>
-                <button class="tab-button" id="more-categories-btn">Еще категории</button>
-            </div>
-        </div>
+        <label for="width">Ширина (см):</label>
+        <input type="number" id="width" name="width" required min="1" step="any">
 
-        <h2>Каталог</h2>
-        <div id="product-list" class="products-list">
-            <!-- Карточки товаров будут добавляться сюда динамически -->
-        </div>
+        <label for="height">Высота (см):</label>
+        <input type="number" id="height" name="height" required min="1" step="any">
 
-        <div id="more-categories-modal" class="modal hidden">
-            <div class="modal-content">
-                <span id="close-modal-btn" class="close-modal-btn">&times;</span>
-                <h2>Дополнительные категории</h2>
-                <button class="modal-tab-button" data-tab="tab5">Колонки</button>
-                <button class="modal-tab-button" data-tab="tab6">Виниловые пластинки</button>
-                <button class="modal-tab-button" data-tab="tab7">Диски на пc 5</button>
-            </div>
-        </div>
+        <label for="cost">Стоимость ($):</label>
+        <input type="number" id="cost" name="cost" required min="0.01" step="any">
 
-        <div id="usercard" class="usercard hidden"></div>
-    </div>
+        <label for="quantity">Количество коробок:</label>
+        <input type="number" id="quantity" name="quantity" required min="1" step="1">
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js"></script>
+        <input type="submit" value="Рассчитать стоимость">
+    </form>
+
+    <script>
+    document.getElementById("deliveryForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // 1️⃣ Получаем данные из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const telegram_id = urlParams.get("tg_id") ? parseInt(urlParams.get("tg_id")) : null;
+        const username = urlParams.get("username") || "не указан";
+        const first_name = urlParams.get("first_name") || "не указано";
+        const last_name = urlParams.get("last_name") || "не указано";
+        const language_code = urlParams.get("lang") || "неизвестно";
+
+        // 2️⃣ Получаем данные формы
+        const formData = {
+            category: document.getElementById("category").value,
+            weight: parseFloat(document.getElementById("weight").value),
+            length: parseFloat(document.getElementById("length").value),
+            width: parseFloat(document.getElementById("width").value),
+            height: parseFloat(document.getElementById("height").value),
+            cost: parseFloat(document.getElementById("cost").value),
+            quantity: parseInt(document.getElementById("quantity").value),
+            telegram_id: telegram_id,
+            username: username,
+            first_name: first_name,
+            last_name: last_name,
+            language_code: language_code
+        };
+
+        // 3️⃣ Отправляем данные на сервер Flask
+        fetch("/save", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => { alert(data.message); })
+        .catch(error => { alert("Ошибка: " + error.message); });
+    });
+</script>
 </body>
 </html>
